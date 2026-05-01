@@ -1,25 +1,4 @@
-import { Gamepad2 } from "lucide-react"
-
-const upcomingGames = [
-  {
-    title: "Project Alpha",
-    genre: "Action RPG",
-    status: "In Development",
-    description: "An epic adventure awaits in this action-packed RPG experience.",
-  },
-  {
-    title: "Project Beta",
-    genre: "Simulator",
-    status: "Early Stage",
-    description: "A unique simulation game with innovative mechanics.",
-  },
-  {
-    title: "Project Gamma",
-    genre: "Adventure",
-    status: "Concept",
-    description: "An immersive world filled with mysteries to uncover.",
-  },
-]
+import { Clock } from "lucide-react"
 
 export function Games() {
   return (
@@ -39,22 +18,36 @@ export function Games() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {upcomingGames.map((game) => (
+          {[1, 2, 3].map((i) => (
             <div
-              key={game.title}
-              className="group rounded-lg border border-border bg-background overflow-hidden hover:border-foreground/20 transition-colors"
+              key={i}
+              className="group rounded-lg border border-border bg-background overflow-hidden"
             >
               <div className="aspect-[16/10] bg-secondary flex items-center justify-center">
-                <Gamepad2 className="h-10 w-10 text-muted-foreground/30" />
+                <div className="text-center">
+                  <Clock className="h-10 w-10 text-muted-foreground/40 mx-auto mb-2" />
+                  <p className="text-sm text-muted-foreground">In Development</p>
+                </div>
               </div>
               <div className="p-6">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">{game.status}</p>
-                <h3 className="font-medium mb-1">{game.title}</h3>
-                <p className="text-sm text-muted-foreground mb-3">{game.genre}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{game.description}</p>
+                <div className="h-4 w-24 bg-secondary rounded mb-3" />
+                <div className="h-5 w-32 bg-secondary rounded mb-3" />
+                <div className="space-y-2">
+                  <div className="h-3 w-full bg-secondary rounded" />
+                  <div className="h-3 w-2/3 bg-secondary rounded" />
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground">
+            Want to be notified when we launch?{" "}
+            <a href="#contact" className="text-foreground underline underline-offset-4 hover:no-underline">
+              Get in touch
+            </a>
+          </p>
         </div>
       </div>
     </section>
