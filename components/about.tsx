@@ -1,64 +1,57 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Code2, Lightbulb, Users, Rocket } from "lucide-react"
+import { Lightbulb, Users, Code2, Rocket } from "lucide-react"
 
 const features = [
   {
     icon: Lightbulb,
     title: "Innovation First",
-    description:
-      "We push the boundaries of what's possible on Roblox, creating unique gameplay experiences that stand out.",
+    description: "We push boundaries with creative game mechanics and unique experiences that stand out.",
   },
   {
     icon: Users,
     title: "Community Driven",
-    description:
-      "Our games are built with players in mind. We listen, iterate, and deliver experiences players love.",
+    description: "Player feedback shapes our games. We build experiences that players actually want.",
   },
   {
     icon: Code2,
     title: "Quality Code",
-    description:
-      "Clean, optimized, and scalable code is at the heart of everything we build.",
+    description: "Clean, optimized code ensures smooth gameplay and long-term maintainability.",
   },
   {
     icon: Rocket,
     title: "Ambitious Goals",
-    description:
-      "We're not just building games—we're building a studio that will shape the future of Roblox.",
+    description: "We aim high. Every project is designed to reach millions of players on Roblox.",
   },
 ]
 
 export function About() {
   return (
-    <section id="about" className="py-20 px-4 bg-card/50">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <p className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-widest">
+            About Us
+          </p>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
             Who We Are
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-pretty">
-            Basic Dev&apos;s is a Roblox game development studio with a passion
-            for creating memorable gaming experiences. We invest in talent and
-            build games that players will love.
+          <p className="mx-auto max-w-xl text-muted-foreground text-pretty">
+            Basic Dev&apos;s is a passionate team of developers, designers, and creators 
+            dedicated to building memorable gaming experiences on the Roblox platform.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature) => (
-            <Card
+            <div
               key={feature.title}
-              className="bg-card border-border hover:border-primary/50 transition-colors"
+              className="p-6 rounded-lg border border-border bg-card hover:border-foreground/20 transition-colors"
             >
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </CardContent>
-            </Card>
+              <div className="mb-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-secondary">
+                <feature.icon className="h-5 w-5" />
+              </div>
+              <h3 className="font-medium mb-2">{feature.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+            </div>
           ))}
         </div>
       </div>

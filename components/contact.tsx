@@ -1,153 +1,133 @@
-import { Card, CardContent } from "@/components/ui/card"
+"use client"
+
+import { useState } from "react"
+import { Mail, MessageSquare, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MessageSquare } from "lucide-react"
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log("Form submitted:", formData)
+  }
+
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="py-24 md:py-32 bg-secondary/50">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Get In Touch
+          <p className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-widest">
+            Contact
+          </p>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+            Get in Touch
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-pretty">
-            Have a question, want to partner with us, or just want to say hi?
-            We&apos;d love to hear from you.
+          <p className="mx-auto max-w-xl text-muted-foreground text-pretty">
+            Have questions or want to work with us? Reach out and we&apos;ll get back 
+            to you as soon as possible.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <Card className="bg-card border-border">
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold text-foreground mb-6">
-                Send Us a Message
-              </h3>
-              <form className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-foreground mb-2"
-                    >
-                      Name
-                    </label>
-                    <Input
-                      id="name"
-                      placeholder="Your name"
-                      className="bg-input border-border"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-foreground mb-2"
-                    >
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      className="bg-input border-border"
-                    />
-                  </div>
+        <div className="grid lg:grid-cols-5 gap-12 max-w-4xl mx-auto">
+          <div className="lg:col-span-2 space-y-4">
+            <div className="p-5 rounded-lg border border-border bg-background">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                  <Mail className="h-4 w-4" />
                 </div>
                 <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-foreground mb-2"
-                  >
-                    Subject
+                  <p className="font-medium text-sm">Email</p>
+                  <p className="text-sm text-muted-foreground">contact@basicdevs.com</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-5 rounded-lg border border-border bg-background">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                  <MessageSquare className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="font-medium text-sm">Discord</p>
+                  <p className="text-sm text-muted-foreground">Join our community</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-3">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="text-sm font-medium mb-2 block">
+                    Name
                   </label>
                   <Input
-                    id="subject"
-                    placeholder="What's this about?"
-                    className="bg-input border-border"
+                    id="name"
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-background"
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-foreground mb-2"
-                  >
-                    Message
+                  <label htmlFor="email" className="text-sm font-medium mb-2 block">
+                    Email
                   </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your project or inquiry..."
-                    rows={5}
-                    className="bg-input border-border resize-none"
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="bg-background"
                   />
                 </div>
-                <Button type="submit" className="w-full">
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+              </div>
 
-          <div className="space-y-6">
-            <Card className="bg-card border-border">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">
-                      Email Us
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-2">
-                      For general inquiries and partnerships
-                    </p>
-                    <a
-                      href="mailto:contact@basicdevs.com"
-                      className="text-primary hover:underline"
-                    >
-                      contact@basicdevs.com
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              <div>
+                <label htmlFor="subject" className="text-sm font-medium mb-2 block">
+                  Subject
+                </label>
+                <Input
+                  id="subject"
+                  placeholder="What's this about?"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  required
+                  className="bg-background"
+                />
+              </div>
 
-            <Card className="bg-card border-border">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <MessageSquare className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">
-                      Discord
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-2">
-                      Join our community for updates and discussions
-                    </p>
-                    <a
-                      href="#"
-                      className="text-primary hover:underline"
-                    >
-                      Join our Discord Server
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              <div>
+                <label htmlFor="message" className="text-sm font-medium mb-2 block">
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  placeholder="Tell us more..."
+                  rows={5}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  className="bg-background resize-none"
+                />
+              </div>
 
-            <Card className="bg-card border-border">
-              <CardContent className="pt-6">
-                <h3 className="font-semibold text-foreground mb-3">
-                  Response Time
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  We typically respond to all inquiries within 24-48 hours.
-                  For urgent matters, please indicate so in your message subject.
-                </p>
-              </CardContent>
-            </Card>
+              <Button type="submit" size="lg" className="w-full sm:w-auto">
+                Send Message
+                <Send className="ml-2 h-4 w-4" />
+              </Button>
+            </form>
           </div>
         </div>
       </div>

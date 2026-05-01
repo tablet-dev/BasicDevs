@@ -1,70 +1,58 @@
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowRight, Gamepad2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export function Hero() {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center pt-20 pb-16 px-4"
-    >
-      <div className="max-w-7xl mx-auto text-center">
-        <div className="flex justify-center mb-8">
+    <section className="min-h-screen flex items-center justify-center pt-20">
+      <div className="mx-auto max-w-6xl px-6 py-24 text-center">
+        <div className="mb-10">
           <Image
             src="/images/logo-transparent.png"
-            alt="Basic Dev's Logo"
-            width={200}
-            height={200}
-            className="w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56"
+            alt="Basic Dev's"
+            width={140}
+            height={140}
+            className="mx-auto"
             priority
           />
         </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 text-balance">
-          Building the Future of{" "}
-          <span className="text-primary">Roblox Gaming</span>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-balance mb-6">
+          Building the Future of
+          <br />
+          <span className="text-muted-foreground">Roblox Gaming</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-pretty">
-          We&apos;re a passionate game development studio investing in talented
-          creators and building innovative experiences on the Roblox platform.
+        <p className="mx-auto max-w-xl text-lg text-muted-foreground mb-12 text-pretty">
+          We&apos;re a game development studio creating immersive experiences on Roblox. 
+          We invest in talented developers and bring ambitious ideas to life.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" asChild className="gap-2">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+          <Button asChild size="lg" className="min-w-[160px]">
             <Link href="#games">
-              <Gamepad2 className="w-5 h-5" />
               Our Games
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" asChild className="gap-2">
-            <Link href="#invest">
-              Partner With Us
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+          <Button asChild variant="outline" size="lg" className="min-w-[160px]">
+            <Link href="#invest">Partner With Us</Link>
           </Button>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-primary">2+</p>
-            <p className="text-muted-foreground text-sm mt-1">
-              Games In Development
-            </p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-primary">10+</p>
-            <p className="text-muted-foreground text-sm mt-1">Team Members</p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-primary">5+</p>
-            <p className="text-muted-foreground text-sm mt-1">Investments</p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-accent">2026</p>
-            <p className="text-muted-foreground text-sm mt-1">Launch Year</p>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-3xl mx-auto pt-12 border-t border-border">
+          {[
+            { value: "3+", label: "Games in Development" },
+            { value: "10+", label: "Team Members" },
+            { value: "2025", label: "Founded" },
+            { value: "Soon", label: "First Launch" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-3xl md:text-4xl font-semibold tracking-tight mb-1">{stat.value}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

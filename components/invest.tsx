@@ -1,132 +1,61 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { TrendingUp, Handshake, DollarSign, ArrowRight } from "lucide-react"
+import { ArrowRight, Check } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 const benefits = [
-  {
-    icon: DollarSign,
-    title: "Funding Support",
-    description:
-      "We provide financial backing to help talented developers bring their visions to life.",
-  },
-  {
-    icon: Handshake,
-    title: "Partnership",
-    description:
-      "Join our network of creators and gain access to resources, mentorship, and collaboration opportunities.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Growth Potential",
-    description:
-      "We help promising projects scale with marketing support and strategic guidance.",
-  },
+  "Funding for your game development",
+  "Access to experienced developers",
+  "Marketing and growth support",
+  "Revenue sharing opportunities",
+  "Technical guidance and mentorship",
+  "Publishing and launch support",
 ]
 
 export function Invest() {
   return (
-    <section id="invest" className="py-20 px-4 bg-card/50">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="invest" className="py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Invest With Us
+            <p className="text-xs font-medium text-muted-foreground mb-3 uppercase tracking-widest">
+              Investment Program
+            </p>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6">
+              Partner With Basic Dev&apos;s
             </h2>
-            <p className="text-muted-foreground text-lg mb-8 text-pretty">
-              We&apos;re actively investing in talented Roblox developers and
-              promising game concepts. If you have a great idea or are looking
-              for support to take your project to the next level, we want to
-              hear from you.
+            <p className="text-muted-foreground mb-8 text-pretty leading-relaxed">
+              Have a great game idea? We invest in talented developers and help bring 
+              ambitious projects to life. Join our network and let&apos;s build something 
+              amazing together.
             </p>
 
-            <div className="space-y-4 mb-8">
+            <ul className="space-y-4 mb-10">
               {benefits.map((benefit) => (
-                <div key={benefit.title} className="flex gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <benefit.icon className="w-5 h-5 text-primary" />
+                <li key={benefit} className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-foreground flex items-center justify-center flex-shrink-0">
+                    <Check className="h-3 w-3 text-background" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
+                  <span className="text-sm">{benefit}</span>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            <Button size="lg" asChild className="gap-2">
+            <Button asChild size="lg">
               <Link href="#contact">
-                Submit Your Pitch
-                <ArrowRight className="w-5 h-5" />
+                Apply Now
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
 
-          <Card className="bg-card border-border">
-            <CardContent className="pt-6">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                What We Look For
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="text-primary text-sm font-bold">1</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">
-                      Innovative Concepts
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      Fresh ideas that bring something new to Roblox
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="text-primary text-sm font-bold">2</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">
-                      Passionate Teams
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      Developers who are committed to their craft
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="text-primary text-sm font-bold">3</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">
-                      Scalable Potential
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      Projects with room to grow and engage large audiences
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="text-primary text-sm font-bold">4</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">
-                      Quality Focus
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      A commitment to delivering polished experiences
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <div className="relative">
+            <div className="aspect-square rounded-lg bg-secondary border border-border flex items-center justify-center">
+              <div className="text-center px-8">
+                <div className="text-5xl md:text-6xl font-semibold tracking-tight mb-3">$$$</div>
+                <p className="text-muted-foreground text-sm">Investment Available</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

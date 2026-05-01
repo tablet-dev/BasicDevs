@@ -1,13 +1,12 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
-import { useState } from "react"
+import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#games", label: "Games" },
   { href: "#invest", label: "Invest" },
@@ -19,68 +18,64 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/logo-transparent.png"
-              alt="Basic Dev's Logo"
-              width={48}
-              height={48}
-              className="w-10 h-10 md:w-12 md:h-12"
-            />
-            <span className="font-bold text-lg md:text-xl text-foreground">
-              Basic Dev&apos;s
-            </span>
-          </Link>
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/images/logo-transparent.png"
+            alt="Basic Dev's Logo"
+            width={40}
+            height={40}
+            className="h-10 w-auto"
+          />
+          <span className="text-lg font-semibold tracking-tight">Basic Dev&apos;s</span>
+        </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden md:block">
-            <Button asChild>
-              <Link href="#contact">Get In Touch</Link>
-            </Button>
-          </div>
-
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-      </div>
+
+        <div className="hidden md:block">
+          <Button asChild size="sm">
+            <Link href="#contact">Get in Touch</Link>
+          </Button>
+        </div>
+
+        <button
+          className="md:hidden p-2"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </nav>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
-          <nav className="flex flex-col px-4 py-4 gap-4">
+        <div className="md:hidden border-t border-border bg-background">
+          <div className="flex flex-col px-6 py-4 gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium py-2"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <Button asChild className="mt-2">
+            <Button asChild size="sm" className="mt-2">
               <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                Get In Touch
+                Get in Touch
               </Link>
             </Button>
-          </nav>
+          </div>
         </div>
       )}
     </header>
